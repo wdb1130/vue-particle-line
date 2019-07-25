@@ -85,13 +85,13 @@ const appCode = `<template>
   </div>
 </template>`
 export default {
-  name: 'usage',
-  data () {
+  name: 'Usage',
+  data() {
     return {
       appCode
     }
   },
-  mounted () {
+  mounted() {
     Prism.highlightAll()
   }
 }

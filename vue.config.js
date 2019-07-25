@@ -1,6 +1,6 @@
-const path = require('path');
+const path = require('path')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
@@ -11,7 +11,7 @@ module.exports = {
     : '/',
   pages: {
     index: {
-      entry: 'examples/main.js',
+      entry: 'examples/main.ts',
       template: 'public/index.html',
       filename: 'index.html'
     }
@@ -23,13 +23,13 @@ module.exports = {
     config.module
       .rule('js')
       .include
-        .add('/packages')
-        .end()
+      .add('/packages')
+      .end()
       .use('babel')
-        .loader('babel-loader')
-        .tap(options => {
-          // 修改它的选项...
-          return options
-        })
+      .loader('babel-loader')
+      .tap(options => {
+        // 修改它的选项...
+        return options
+      })
   }
 }

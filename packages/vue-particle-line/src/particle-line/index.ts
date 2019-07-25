@@ -5,7 +5,14 @@ const minWidth = 1200
 const minHeight = 700
 
 export default class ParticleLine {
-  constructor (tagId, options) {
+  tagId:any
+  options:any
+  dots:any
+  canvas:any
+  ctx:any
+  color:any
+
+  constructor (tagId:any, options:any) {
     this.tagId = tagId
     this.options = options
     this.init()
@@ -25,7 +32,7 @@ export default class ParticleLine {
     }
     this.canvas = canvas
     this.ctx = ctx
-    this.color = new Color()
+    this.color = new Color(0)
     this.createDots(this.ctx, this.canvas.width, this.canvas.height)
     this.animateDots()
     this.hoverEffect()
@@ -33,7 +40,7 @@ export default class ParticleLine {
 
   hoverEffect () {
     if (this.options && this.options.hoverEffect) {
-      this.canvas.addEventListener('mousemove', e => {
+      this.canvas.addEventListener('mousemove', (e:any) => {
         if (this.dots.array.length > this.dots.nb) {
           this.dots.array.pop()
         }
@@ -50,11 +57,11 @@ export default class ParticleLine {
     this.createDots(this.ctx, width, height)
   }
 
-  mixComponents (comp1, weight1, comp2, weight2) {
+  mixComponents (comp1:number, weight1:number, comp2:number, weight2:number) {
     return (comp1 * weight1 + comp2 * weight2) / (weight1 + weight2)
   }
 
-  averageColorStyles (dot1, dot2) {
+  averageColorStyles (dot1:any, dot2:any) {
     const color1 = dot1.color
     const color2 = dot2.color
     const r = this.mixComponents(color1.r, dot1.radius, color2.r, dot2.radius)
@@ -63,7 +70,7 @@ export default class ParticleLine {
     return this.color.createColorStyle(Math.floor(r), Math.floor(g), Math.floor(b))
   }
 
-  createDots (ctx, canvasWidth, canvasHeight) {
+  createDots (ctx:any, canvasWidth:number, canvasHeight:number) {
     this.dots.array = []
     for (let i = 0; i < this.dots.nb; i++) {
       this.dots.array.push(new Dot(ctx, canvasWidth, canvasHeight))

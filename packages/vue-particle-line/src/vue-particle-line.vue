@@ -7,30 +7,18 @@
   </div>
 </template>
 
-<script>
-import ParticleLine from './particle-line'
+<script lang="ts">
 // import { debounce } from 'common/js/utils'
-export default {
-  name: 'vue-particle-line',
-  props: {
-    lineWidth: {
-      type: Number,
-      default: 0.3
-    },
-    dotsNumber: {
-      type: Number,
-      default: 100
-    },
-    dotsDistance: {
-      type: Number,
-      default: 100
-    },
-    hoverEffect: {
-      type: Boolean,
-      default: true
-    }
-  },
-  mounted () {
+import ParticleLine from './particle-line'
+import { Vue, Prop } from 'vue-property-decorator'
+
+export default class extends Vue {
+  @Prop({ default: 0.3 }) lineWidth: number | undefined
+  @Prop({ default: 100 }) dotsNumber: number | undefined
+  @Prop({ default: 100 }) dotsDistance: number | undefined
+  @Prop({ default: true }) hoverEffect: boolean | undefined
+  install:any
+  mounted ():void {
     /* eslint-disable no-new */
     new ParticleLine('canvas', {
       lineWidth: this.lineWidth,

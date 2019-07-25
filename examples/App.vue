@@ -13,13 +13,13 @@ import banner from './components/banner'
 import usage from './components/usage'
 import foot from './components/footer'
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     banner,
     usage,
     foot
   },
-  data () {
+  data() {
     return {
       title: 'vue-particle-line'
     }
